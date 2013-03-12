@@ -1,0 +1,15 @@
+.bundle/
+*.DS_Store
+log/*.log
+pkg/
+Gemfile.lock
+.rvmrc
+
+# Dummy App
+test/dummy/db/*.sqlite3
+test/dummy/log/*.log
+test/dummy/tmp/
+test/dummy/.sass-cache
+test/dummy/db/schema.rb
+test/dummy/public/assets
+test/dummy/tmp/restart.txt

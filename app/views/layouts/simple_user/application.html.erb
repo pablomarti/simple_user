@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SimpleUser</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+
+	<body>
+		<div>
+			<%= render "menu_users" %> || <%= render "menu_admin_users" %>
+		</div>
+		
+		<div>
+			<% flash.each do |name, msg| %>
+				<div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+			    	<a class="close" data-dismiss="alert">×</a>
+			    	<%= msg %>
+			  	</div>
+		 	<% end %>
+		</div>
+
+		<div>
+			<%= yield %>
+		</div>	
+	</body>
+</html>
