@@ -1,9 +1,9 @@
 namespace :simple_user do
-	Rake::Task['db:seed'].enhance ['load_first_admin']
+	Rake::Task['db:seed'].enhance ['simple_user:load_first_admin']
 
 	desc "Loads first admin into DB"
 	task :load_first_admin => :environment do
-		admin_user = AdminUser.new(
+		admin_user = SimpleUser::AdminUser.new(
 			:username => "admin",
 			:email => "admin@example.com",
 			:password => "welcome123",

@@ -12,5 +12,3 @@ gem 'simple_form'
 # Development
 gem 'jquery-rails'
 gem 'debugger'
-gem 'better_errors'
-gem 'binding_of_caller'

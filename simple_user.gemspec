@@ -28,6 +28,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "jquery-rails"
   s.add_development_dependency "debugger"
-  s.add_development_dependency "better_errors"
-  s.add_development_dependency "binding_of_caller"
 end

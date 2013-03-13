@@ -21,6 +21,7 @@ module SimpleUser
 
       def copy_migrations
       	rake "simple_user:install:migrations"
+        SimpleUser::Engine.load_seed
       end
       
     end

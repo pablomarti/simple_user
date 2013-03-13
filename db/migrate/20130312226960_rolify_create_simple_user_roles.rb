@@ -13,7 +13,7 @@ class RolifyCreateSimpleUserRoles < ActiveRecord::Migration
     end
 
     add_index(:simple_user_roles, :name)
-    add_index(:simple_user_roles, [ :name, :resource_type, :resource_id ])
-    add_index(:simple_user_users_roles, [ :simple_user_admin_user_id, :simple_user_role_id ])
+    add_index(:simple_user_roles, [ :name, :resource_type, :resource_id ], :name => "simple_users_r_n_rt_rid")
+    add_index(:simple_user_users_roles, [ :simple_user_admin_user_id, :simple_user_role_id ], :name => "simple_users_ur_i_auid_urid")
   end
 end

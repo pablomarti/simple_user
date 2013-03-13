@@ -4,7 +4,7 @@
   <%= f.input :last_name, :required => true %>
   <%= f.input :email, :required => true %>
 
-  <% if can? :manage, User %>
+  <% if can? :manage, SimpleUser::User %>
     <%= f.input :active %>
   <% end %>
 

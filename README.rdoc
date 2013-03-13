@@ -1,3 +1,5 @@
 = SimpleUser
 
 This project rocks and uses MIT-LICENSE.
+
+//= require your_engine_name
