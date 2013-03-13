@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require simple_user/application
 //= require_tree .
