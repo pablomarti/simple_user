@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency "cancan"
   s.add_dependency "rolify"
   s.add_dependency "omniauth"
-  s.add_dependency "omniauth-facebook", "1.4.0"
+  s.add_dependency "omniauth-facebook", "1.4.1"
   s.add_dependency "simple_form"
 
   #s.add_development_dependency "mysql2"

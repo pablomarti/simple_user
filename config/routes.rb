@@ -25,7 +25,13 @@ SimpleUser::Engine.routes.draw do
   resources :users
 
   #Devise for Admins
-  devise_for :admin_users, :class_name => "SimpleUser::AdminUser", path_names: {sign_in: "login", sign_out: "logout"}, :path => "d", :controllers => { :registrations => "simple_user/admin_users/registrations", :sessions => "simple_user/admin_users/sessions" }
+  devise_for :admin_users, {
+    :class_name => "SimpleUser::AdminUser", 
+    path_names: {sign_in: "login", sign_out: "logout"}, 
+    :path => "d", 
+    :controllers => { :registrations => "simple_user/admin_users/registrations", :sessions => "simple_user/admin_users/sessions" },
+    module: :devise
+  }
 
   #Management of Admins
   resources :admin_users

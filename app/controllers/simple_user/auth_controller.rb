@@ -2,9 +2,20 @@ module SimpleUser
   class AuthController < ApplicationController
 
     def create
-      #debugger
+      logger.debug "--------------------------------------------- REQUEST"
+      logger.debug request.inspect
 
-      auth = env["simple_user.omniauth.auth"]   
+      logger.debug "--------------------------------------------- REQUEST ENV"
+      logger.debug request.env.inspect
+
+      logger.debug "--------------------------------------------- REQUEST ENV OMNIAUTH"
+      logger.debug request.env["omniauth"].inspect
+
+      logger.debug "--------------------------------------------- REQUEST ENV OMNIAUTH-AUTH"
+      logger.debug request.env["omniauth.auth"].inspect
+
+
+      auth = request.env["omniauth.auth"]   
       logger.debug "AUTH: #{auth.inspect}"
       authentication = Authentication.find_by_provider_and_uid(auth['provider'], auth['uid'])
      
