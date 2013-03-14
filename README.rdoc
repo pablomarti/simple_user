@@ -31,3 +31,5 @@ Make avaiable to your users for loggin with Devise or Facebook, and manage them 
 3. Integrate Twitter
 
 4. Ingrate Google
+
+5. Remove unnecessary files and codes (rake task, omniauth, ...)
