@@ -4,20 +4,9 @@ module SimpleUser
       source_root File.expand_path("../templates", __FILE__)
       desc "Install SimpleUser"
 
-=begin
-      def run_other_generators
-        generate "devise:install"
-        generate "devise User"
-        generate "devise AdminUser"
-        generate "cancan:ability"
-        generate "rolify:role"
-      end
-=end
-
       def copy_config_file
         copy_file "fb_config.yml", "config/fb_config.yml"
         copy_file "devise_config.yml", "config/devise_config.yml"
-        copy_file "omniauth.rb", "config/initializers/omniauth.rb"
       end
 
       def copy_migrations

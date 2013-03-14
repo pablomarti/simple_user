@@ -22,5 +22,10 @@ module SimpleUser
         ENV[key.to_s] = value.to_s
       end if File.exists?(env_file)
     end
+
+    middleware.use OmniAuth::Builder do
+      provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], :scope => ENV['FACEBOOK_SCOPE']
+    end
+    
   end
 end
