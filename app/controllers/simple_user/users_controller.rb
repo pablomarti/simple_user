@@ -40,9 +40,11 @@ module SimpleUser
 
       respond_to do |format|
         if @user.save
+          logger.debug "SAVE"
           format.html { redirect_to @user, notice: 'User was successfully created.' }
           format.json { render json: @user, status: :created, location: @user }
         else
+          logger.debug "ERROR: #{@user.errors.inspect}"
           format.html { render action: "new" }
           format.json { render json: @user.errors, status: :unprocessable_entity }
         end

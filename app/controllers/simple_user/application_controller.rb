@@ -1,5 +1,5 @@
 module SimpleUser
-	class ApplicationController < ActionController::Base
+	class ApplicationController < ::ApplicationController
 	  
 	  	protect_from_forgery
 
@@ -10,8 +10,13 @@ module SimpleUser
 			flash[:error] = "Access denied"
 			redirect_to root_url
 		end
+
+		def acb
+			logger.debug "ACB"
+		end
 		
 		def banned?
+			logger.debug "BANNED?"
 			if current_user.present? && current_user.banned?
 			  sign_out current_user
 	          flash.delete(:notice)
@@ -26,6 +31,7 @@ module SimpleUser
 		end
 
 		def current_ability
+			logger.debug "CURRENT ABILITY"
 			@current_ability ||= Ability.new(current_admin_user)
 		end
 

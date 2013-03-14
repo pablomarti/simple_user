@@ -3,11 +3,11 @@
 <% else %>
 	<%= link_to "Welcome, Admin: #{current_admin_user.username}", simple_user.edit_admin_user_registration_path %>
 	
-	<% if can? :manage, AdminUser %>
+	<% if can? :manage, SimpleUser::AdminUser %>
 		| <%= link_to "Manage Admins", simple_user.admin_users_path %>
 	<% end %>
 
-	<% if can? :manage, User %>
+	<% if can? :manage, SimpleUser::User %>
 		| <%= link_to "Manage Users", simple_user.users_path %>
 	<% end %>
 

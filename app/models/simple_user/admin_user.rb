@@ -15,7 +15,8 @@ module SimpleUser
                             :join_table => :simple_user_users_roles, 
                             :foreign_key => :simple_user_admin_user_id
 =end    
-    has_and_belongs_to_many :simple_user_admin_users, :join_table => :simple_user_users_roles
+    #has_and_belongs_to_many :simple_user_admin_users, :join_table => :simple_user_users_roles
+    has_and_belongs_to_many :roles, :join_table => "users_roles", :foreign_key => :simple_user_admin_user_id
 
     # Include default devise modules. Others available are:
     # :token_authenticatable, :confirmable,
@@ -40,7 +41,7 @@ module SimpleUser
     end
 
     def self.get_editable_admins_except(admin_id)
-      joins(:roles).where("roles.name <> ? AND admin_users.id <> ?", "admin", admin_id).group(:id)
+      joins(:roles).where("roles.name <> ? AND simple_user_admin_users.id <> ?", "admin", admin_id).group(:id)
     end
     
   end

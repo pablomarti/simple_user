@@ -4,7 +4,7 @@
   <%= f.input :password, :required => @required_password %>
   <%= f.input :password_confirmation, :required => @required_password %>
 
-  <% if can? :manage, SimpleUser::Role %>
+  <% if can? :manage, Role %>
   	<%= f.input :temporal_roles, :label => "Roles" %>
     <%= f.input :active %>
   <% end %>

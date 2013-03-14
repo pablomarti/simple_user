@@ -1,7 +1,5 @@
 class Role < ActiveRecord::Base
 
-  set_table_name "simple_user_roles"
-
 =begin
   has_and_belongs_to_many :simple_user_admin_users, 
   						  :class_name => "AdminUser", 
@@ -11,7 +9,7 @@ class Role < ActiveRecord::Base
 =end
 
 
-  has_and_belongs_to_many :admin_users#c, :join_table => "simple_user_users_roles"
+  has_and_belongs_to_many :admin_users, :join_table => "users_roles"
 
   belongs_to :resource, :polymorphic => true
   

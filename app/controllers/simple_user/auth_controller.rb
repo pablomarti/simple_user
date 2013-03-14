@@ -4,7 +4,8 @@ module SimpleUser
     def create
       #debugger
 
-      auth = env["omniauth.auth"]   
+      auth = env["simple_user.omniauth.auth"]   
+      logger.debug "AUTH: #{auth.inspect}"
       authentication = Authentication.find_by_provider_and_uid(auth['provider'], auth['uid'])
      
       if authentication
