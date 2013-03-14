@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["pablo.marti89@gmail.com"]
   s.homepage    = "https://github.com/pablomarti/simple_user"
   s.summary     = "Manage users and admins with Devise and Omniauth-Facebook."
-  s.description = "Make avaiable to your users for loggin with Devise or Facebook, and manage them and your admins. Each admin is related to roles, with Rolify, andhas authorization by CanCan."
+  s.description = "Make avaiable to your users for loggin with Devise or Facebook, and manage them and your admins. Each admin is related to roles with Rolify, and manages authorization with CanCan."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]

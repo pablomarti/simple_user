@@ -2,7 +2,7 @@
 
 Manage users and admins with Devise and Omniauth-Facebook.
 
-Make avaiable to your users for loggin with Devise or Facebook, and manage them and your admins. Each admin is related to roles, with Rolify, andhas authorization by CanCan.
+Make avaiable to your users for loggin with Devise or Facebook, and manage them and your admins. Each admin is related to roles with Rolify, and manages authorization with CanCan.
 
 
 == Installation
