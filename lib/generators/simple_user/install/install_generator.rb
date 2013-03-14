@@ -17,6 +17,7 @@ module SimpleUser
       def copy_config_file
         copy_file "fb_config.yml", "config/fb_config.yml"
         copy_file "devise_config.yml", "config/devise_config.yml"
+        copy_file "omniauth.rb", "config/initializers/omniauth.rb"
       end
 
       def copy_migrations
