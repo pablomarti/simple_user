@@ -1,5 +1,33 @@
 = SimpleUser
 
-This project rocks and uses MIT-LICENSE.
+Manage users and admins with Devise and Omniauth-Facebook.
 
-//= require your_engine_name
+Make avaiable to your users for loggin with Devise or Facebook, and manage them and your admins. Each admin is related to roles, with Rolify, andhas authorization by CanCan.
+
+
+== Installation
+
+1. Add to your gemfile: <tt>gem 'simple_user', :git => 'git://github.com/pablomarti/simple_user.git'</tt>
+
+2. Run <tt>bundle</tt>
+
+3. Execute: <tt>rails generate simple_user:install</tt>
+
+4. Run migrations: <tt>rake db:migrate</tt>
+
+5. Run seeds: <tt>rake db:seed</tt>
+
+6. Add to your routes.rb: <tt>mount SimpleUser::Engine => "/simple_user", :as => "simple_user"</tt>
+
+7. Watch the test/dummy for an example of the links
+
+
+== TODO
+
+1. List the methods for the links
+
+2. Explain integration with models of the parent app
+
+3. Integrate Twitter
+
+4. Ingrate Google
