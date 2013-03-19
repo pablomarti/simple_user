@@ -25,6 +25,7 @@ module SimpleUser
 
     config.to_prepare do
       ApplicationController.helper(ApplicationHelper)
+      ApplicationController.helper(LinksHelper)
     end
 
     middleware.use OmniAuth::Builder do
