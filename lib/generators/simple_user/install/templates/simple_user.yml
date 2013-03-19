@@ -1,2 +1,3 @@
 APPLICATION_LAYOUT: "application"
-ADMIN_LAYOUT: "application"
+ADMIN_LAYOUT: 'application'
+ADMIN_PATH: 'root_path'

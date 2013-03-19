@@ -12,6 +12,7 @@ module SimpleUser
             flash[:error] = "This account has been suspended."
             root_path
           else
+            stored_location_for(resource_or_scope) || ENV['ADMIN_PATH']
             super
           end
         end
