@@ -27,6 +27,7 @@ module SimpleUser
       ActiveSupport.on_load :action_controller do
         helper SimpleUser::ApplicationHelper
       end
+    end
 
     #config.to_prepare do
     #  ApplicationController.helper(ApplicationHelper)
