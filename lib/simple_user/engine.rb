@@ -23,9 +23,14 @@ module SimpleUser
       end if File.exists?(env_file)
     end
 
-    config.to_prepare do
-      ApplicationController.helper(ApplicationHelper)
-    end
+    initializer 'simple_user.action_controller' do |app|
+      ActiveSupport.on_load :action_controller do
+        helper SimpleUser::ApplicationHelper
+      end
+
+    #config.to_prepare do
+    #  ApplicationController.helper(ApplicationHelper)
+    #end
 
     middleware.use OmniAuth::Builder do
       provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], :scope => ENV['FACEBOOK_SCOPE']
