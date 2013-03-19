@@ -1,6 +1,8 @@
 module SimpleUser
   class AdminUsers::SessionsController < Devise::SessionsController
 
+    layout ENV['ADMIN_LAYOUT']
+
     protected
 
         def after_sign_in_path_for(resource)

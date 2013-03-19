@@ -21,6 +21,11 @@ module SimpleUser
       YAML.load(File.open(env_file)).each do |key, value|
         ENV[key.to_s] = value.to_s
       end if File.exists?(env_file)
+
+      env_file = File.join(Rails.root, 'config', 'simple_user.yml')
+      YAML.load(File.open(env_file)).each do |key, value|
+        ENV[key.to_s] = value.to_s
+      end if File.exists?(env_file)
     end
 
     initializer 'simple_user.action_controller' do |app|

@@ -1,5 +1,7 @@
 module SimpleUser
   class UsersController < ApplicationController
+
+    layout ENV['ADMIN_LAYOUT']
     
     before_filter :authenticate_admin_user!
     before_filter :authorize_user_manager
