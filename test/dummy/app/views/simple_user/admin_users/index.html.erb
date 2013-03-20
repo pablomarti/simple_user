@@ -1,0 +1,27 @@
+<h1>Administrators</h1>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Username</th>
+    <th>Active</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @admin_users.each do |admin_user| %>
+  <tr>
+    <td><%= admin_user.email %></td>
+    <td><%= admin_user.username %></td>
+    <td><%= print_yes_or_no admin_user.active %></td>
+    <td><%= link_to 'Show', admin_user %></td>
+    <td><%= link_to 'Edit', edit_admin_user_path(admin_user) %></td>
+    <td><%= link_to 'Destroy', admin_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Admin user', new_admin_user_path %>
