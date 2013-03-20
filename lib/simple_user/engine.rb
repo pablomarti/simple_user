@@ -11,6 +11,8 @@ module SimpleUser
   class Engine < ::Rails::Engine
     isolate_namespace SimpleUser
 
+    config.generators.load_generators
+
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'fb_config.yml')
       YAML.load(File.open(env_file)).each do |key, value|
