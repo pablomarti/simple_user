@@ -22,7 +22,11 @@ module SimpleUser
             flash[:error] = "This account has been suspended."
             root_path
           else
-            super
+            if ENV['REDIRECT_USER_AFTER_SIGNIN'] == 'false'
+              super
+            else
+              request.referer
+            end
           end
         end
 
