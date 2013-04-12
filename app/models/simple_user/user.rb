@@ -80,7 +80,7 @@ module SimpleUser
       !active
     end
 
-    def social_picture(provider = "facebook", width = 160, height 129)
+    def social_picture(provider = "facebook", width = 160, height = 129)
       auth = authentications.where(:provider => provider).first rescue nil
 
       tmp_image = case provider
