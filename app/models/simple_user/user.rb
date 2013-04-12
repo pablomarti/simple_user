@@ -82,7 +82,15 @@ module SimpleUser
 
     def social_picture(provider = "facebook", width = 160, height 129)
       auth = authentications.where(:provider => provider).first rescue nil
-      auth.nil? ? "" : "http://graph.facebook.com/#{auth.uid}/picture?width=160&height=129"
+
+      tmp_image = case provider
+            when "facebook"
+                auth.nil? ? "" : "http://graph.facebook.com/#{auth.uid}/picture?width=160&height=129"
+            else
+                ""
+      end
+
+      return tmp_image
     end
 
     private
