@@ -1,6 +1,11 @@
 module SimpleUser
   class Users::SessionsController < Devise::SessionsController
 
+    def new
+       session[:return_to] = "/"
+       super
+    end
+
     def create
       self.resource = warden.authenticate!(auth_options)
       #self.resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#failure")
@@ -14,7 +19,6 @@ module SimpleUser
     #end
 
     protected
-
         def after_sign_in_path_for(resource)
           if resource.banned?
             sign_out resource
@@ -22,10 +26,13 @@ module SimpleUser
             flash[:error] = "This account has been suspended."
             root_path
           else
-            if ENV['REDIRECT_USER_AFTER_SIGNIN'] == 'false'
+            if ENV['REDIRECT_USER_AFTER_SIGNIN'] == 'false' || !defined? session[:return_to] || session[:return_to] == "/" ||  session[:return_to].nil?
+              session[:return_to] = "/"
               super
             else
-              request.referer
+              return_to = session[:return_to]
+              session[:return_to] = "/"
+              return_to
             end
           end
         end
