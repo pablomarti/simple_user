@@ -85,7 +85,7 @@ module SimpleUser
 
       tmp_image = case provider
             when "facebook"
-                auth.nil? ? "" : "http://graph.facebook.com/#{auth.uid}/picture?width=160&height=129"
+                auth.nil? ? "" : "http://graph.facebook.com/#{auth.uid}/picture?width=#{width}&height=#{height}"
             else
                 ""
       end
