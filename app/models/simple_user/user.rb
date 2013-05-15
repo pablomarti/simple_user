@@ -80,6 +80,19 @@ module SimpleUser
       !active
     end
 
+    def social_picture(provider = "facebook", width = 160, height = 129)
+      auth = authentications.where(:provider => provider).first rescue nil
+
+      tmp_image = case provider
+            when "facebook"
+                auth.nil? ? "" : "http://graph.facebook.com/#{auth.uid}/picture?width=160&height=129"
+            else
+                ""
+      end
+
+      return tmp_image
+    end
+
     private
       def generate_random(str_length)
         charlist = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a

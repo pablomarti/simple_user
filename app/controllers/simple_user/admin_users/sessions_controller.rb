@@ -9,8 +9,7 @@ module SimpleUser
           if resource.banned?
             sign_out resource
             flash.delete(:notice)
-            flash[:error] = "This account has been suspended."
-            root_path
+            flash[:error] = "This account has been suspended."          
           else
             ENV['ADMIN_PATH']
           end

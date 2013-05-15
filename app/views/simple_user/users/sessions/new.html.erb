@@ -1,6 +1,10 @@
-<h2>Sign in</h2>
+<h2>Sign In</h2>
 
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <% if !flash[:alert].nil? %>
+  	<%= flash[:alert] %>
+  <% end %>
+
   <div class="form-inputs">
     <%= f.input :username, :required => true, :autofocus => true %>
     <%= f.input :password, :required => true %>
