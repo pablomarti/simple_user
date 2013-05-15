@@ -7,7 +7,7 @@ Make avaiable to your users for loggin with Devise or Facebook, and manage them 
 
 == Installation
 
-1. Add to your gemfile: <tt>gem 'simple_user', :git => 'git://github.com/pablomarti/simple_user.git'</tt>
+1. Add to your gemfile: <tt>gem 'simple_user'</tt>
 
 2. Run <tt>bundle</tt>
 
@@ -19,7 +19,9 @@ Make avaiable to your users for loggin with Devise or Facebook, and manage them 
 
 6. Add to your routes.rb: <tt>mount SimpleUser::Engine => "/simple_user", :as => "simple_user"</tt>
 
-7. Watch the test/dummy for an example of the links
+7. Add to your application.js: <tt>//= require simple_user/application</tt>
+
+8. Watch the test/dummy for an example of the links
 
 
 == TODO

@@ -4,6 +4,7 @@ log/*.log
 pkg/
 Gemfile.lock
 .rvmrc
+*.gem
 
 # Dummy App
 test/dummy/db/*.sqlite3
