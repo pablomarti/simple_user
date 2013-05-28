@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require simple_user/application
+//= require crimagify/application
 //= require_tree .
+console.log('xxxx');

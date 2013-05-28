@@ -12,6 +12,7 @@ module SimpleUser
 
       def copy_migrations
       	rake "simple_user:install:migrations"
+        generate "crimagify:install"
         SimpleUser::Engine.load_seed
       end
       

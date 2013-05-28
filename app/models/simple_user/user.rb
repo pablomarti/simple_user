@@ -1,6 +1,9 @@
 module SimpleUser
   class User < ActiveRecord::Base
+
+    include Crimagify::CrimagifyEnvs
     
+    # has_many :crimagify_images, :as => :parent, :dependent => :destroy, :class_name => Crimagify::Image
     resourcify
     
     has_many :authentications, :dependent => :delete_all
@@ -11,10 +14,11 @@ module SimpleUser
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable
 
-    attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :first_name, :last_name, :active
+    attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :first_name, :last_name, :active, :crimagify_schema
     
     validates :email, :uniqueness => true
     validates :username, :uniqueness => true
+
 
     def self.build_new_auth(auth)
       email = ""
@@ -92,6 +96,7 @@ module SimpleUser
 
       return tmp_image
     end
+
 
     private
       def generate_random(str_length)

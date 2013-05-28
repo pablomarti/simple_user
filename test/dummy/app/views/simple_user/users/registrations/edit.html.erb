@@ -18,6 +18,11 @@
     <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
   </div>
 
+  <div>
+    <%= images_id(resource) %>
+    <%= image_cropper(resource, { image_name: "imgA", ratio: :big}) %>
+  </div>
+
   <div class="form-actions">
     <%= f.button :submit, "Update" %>
   </div>

@@ -1,0 +1,38 @@
+#This is an example, you must replace the content of this file with your own configuration
+SimpleUser::User:
+  imgA:
+    big:
+      width: '400'
+      height: '400'
+    user:
+      width: '200'
+      height: '200'
+    thumb:
+      width: '150'
+      height: '150'
+
+  imgB:
+    big:
+      width: '300'
+      height: '150'
+    user:
+      width: '600'
+      height: '300'
+    thumb:
+      width: '150'
+      height: '75'
+
+Product:
+  imgA:
+    small:
+      width: '300'
+      height: '300'
+    big:
+      width: '500'
+      height: '500'
+    medium:
+      width: '400'
+      height: '400'
+    thumb:
+      width: '150'
+      height: '150'
