@@ -30,34 +30,34 @@ Make avaiable to your users for loggin with Devise or Facebook, and manage them 
 == Link your views
 
 Example for users:
-		...
-		<% unless user_signed_in? %>
-			<%=link_to "Login", simple_user.new_user_session_path %>
-			<%= link_to "Login with Facebook", "/simple_user/auth/facebook", id: "sign_in" %>
-		<% else %>
-			<%= link_to "Welcome, #{current_user.username}", simple_user.edit_user_registration_path %>
-			<%= link_to "Log out", simple_user.destroy_user_session_path, method: :delete, id: "sign_out" %>
-		<% end %>
-		...
+	...
+	<% unless user_signed_in? %>
+		<%=link_to "Login", simple_user.new_user_session_path %>
+		<%= link_to "Login with Facebook", "/simple_user/auth/facebook", id: "sign_in" %>
+	<% else %>
+		<%= link_to "Welcome, #{current_user.username}", simple_user.edit_user_registration_path %>
+		<%= link_to "Log out", simple_user.destroy_user_session_path, method: :delete, id: "sign_out" %>
+	<% end %>
+	...
 
 Example for admins:
-		...
-		<% unless admin_user_signed_in? %>
-			<%=link_to "Login", simple_user.new_admin_user_session_path %>
-		<% else %>
-			<%= link_to "Welcome, Admin: #{current_admin_user.username}", simple_user.edit_admin_user_registration_path %>
-			
-			<% if can? :manage, SimpleUser::AdminUser %>
-				<%= link_to "Manage Admins", simple_user.admin_users_path %>
-			<% end %>
-
-			<% if can? :manage, SimpleUser::User %>
-				<%= link_to "Manage Users", simple_user.users_path %>
-			<% end %>
-
-			<%= link_to "Log out", simple_user.destroy_admin_user_session_path, method: :delete, id: "sign_out" %>
+	...
+	<% unless admin_user_signed_in? %>
+		<%=link_to "Login", simple_user.new_admin_user_session_path %>
+	<% else %>
+		<%= link_to "Welcome, Admin: #{current_admin_user.username}", simple_user.edit_admin_user_registration_path %>
+		
+		<% if can? :manage, SimpleUser::AdminUser %>
+			<%= link_to "Manage Admins", simple_user.admin_users_path %>
 		<% end %>
-		...
+
+		<% if can? :manage, SimpleUser::User %>
+			<%= link_to "Manage Users", simple_user.users_path %>
+		<% end %>
+
+		<%= link_to "Log out", simple_user.destroy_admin_user_session_path, method: :delete, id: "sign_out" %>
+	<% end %>
+	...
 
 == TODO
 
