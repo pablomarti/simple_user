@@ -36,6 +36,13 @@ module SimpleUser
       end
     end
 
+    initializer 'simple_user.app_controller' do |app|
+      ActiveSupport.on_load :action_controller do
+        extend SimpleUser::Concerns::Controllers::ApplicationController::ClassMethods
+        include SimpleUser::Concerns::Controllers::ApplicationController::InstanceMethods
+      end
+    end
+
     #config.to_prepare do
     #  ApplicationController.helper(ApplicationHelper)
     #end

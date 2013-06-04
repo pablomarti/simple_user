@@ -21,17 +21,48 @@ Make avaiable to your users for loggin with Devise or Facebook, and manage them 
 
 7. Add to your application.js: <tt>//= require simple_user/application</tt>
 
-8. Watch the test/dummy for an example of the links
+8. Add before filters <tt>banned?</tt> and <tt>set_user_return_to</tt> (check /lib/simple_user/concerns/controllers/application_controller.rb if you want to override these methods)
 
+9. Watch the test/dummy for an example of the links
+
+10. Remember add <tt>config.action_mailer.default_url_options = { :host => 'localhost:3000' }</tt> to your config/application.rb, and change the host in production
+
+== Link your views
+
+Example for users:
+		...
+		<% unless user_signed_in? %>
+			<%=link_to "Login", simple_user.new_user_session_path %>
+			<%= link_to "Login with Facebook", "/simple_user/auth/facebook", id: "sign_in" %>
+		<% else %>
+			<%= link_to "Welcome, #{current_user.username}", simple_user.edit_user_registration_path %>
+			<%= link_to "Log out", simple_user.destroy_user_session_path, method: :delete, id: "sign_out" %>
+		<% end %>
+		...
+
+Example for admins:
+		...
+		<% unless admin_user_signed_in? %>
+			<%=link_to "Login", simple_user.new_admin_user_session_path %>
+		<% else %>
+			<%= link_to "Welcome, Admin: #{current_admin_user.username}", simple_user.edit_admin_user_registration_path %>
+			
+			<% if can? :manage, SimpleUser::AdminUser %>
+				<%= link_to "Manage Admins", simple_user.admin_users_path %>
+			<% end %>
+
+			<% if can? :manage, SimpleUser::User %>
+				<%= link_to "Manage Users", simple_user.users_path %>
+			<% end %>
+
+			<%= link_to "Log out", simple_user.destroy_admin_user_session_path, method: :delete, id: "sign_out" %>
+		<% end %>
+		...
 
 == TODO
 
-1. List the methods for the links
+1. Integrate Twitter
 
-2. Explain integration with models of the parent app
+2. Ingrate Google
 
-3. Integrate Twitter
-
-4. Ingrate Google
-
-5. Remove unnecessary files and codes (rake task, omniauth, ...)
+3. Remove unnecessary files and codes (rake task, omniauth, ...)

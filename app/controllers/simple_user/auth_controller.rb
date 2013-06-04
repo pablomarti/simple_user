@@ -23,11 +23,15 @@ module SimpleUser
     end
 
     def redirect_after_create
+      logger.debug "AuthController.redirect_after_create"
+      logger.debug session[:return_to]
       if ENV['REDIRECT_USER_AFTER_SIGNIN'] == 'false' || !defined? session[:return_to] || session[:return_to] == "/" ||  session[:return_to].nil?
         session[:return_to] = "/"
+        logger.debug "CHANGE #{session[:return_to]}"
         redirect_to root_url
       else
         return_to = session[:return_to]
+        logger.debug "PRESERVES #{session[:return_to]}"
         session[:return_to] = "/"
         redirect_to return_to
       end   

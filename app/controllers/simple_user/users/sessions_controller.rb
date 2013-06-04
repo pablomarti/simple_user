@@ -2,8 +2,11 @@ module SimpleUser
   class Users::SessionsController < Devise::SessionsController
 
     def new
-       session[:return_to] = "/"
-       super
+      if ENV['REDIRECT_USER_AFTER_SIGNIN'] == 'false' || session[:return_to].nil?
+        session[:return_to] = "/"
+      end
+
+      super
     end
 
     def create

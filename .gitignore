@@ -14,3 +14,4 @@ test/dummy/.sass-cache
 test/dummy/db/schema.rb
 test/dummy/public/assets
 test/dummy/tmp/restart.txt
+test/dummy/config/initializers/setup_email.rb

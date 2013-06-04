@@ -1,3 +1,5 @@
+<%=link_to "Index", main_app.root_path %>
+|
 <% unless user_signed_in? %>
 	<%=link_to "Login", simple_user.new_user_session_path %>
 	|
@@ -7,3 +9,5 @@
 	|
 	<%= link_to "Log out", simple_user.destroy_user_session_path, method: :delete, id: "sign_out" %>
 <% end %>
+
+<%= link_to "Login - Example", "/main/login" %>

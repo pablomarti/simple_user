@@ -6,31 +6,16 @@ class ApplicationController < ActionController::Base
 	before_filter :banned?
 	before_filter :set_user_return_to
 
+	#This method is overriding /lib/simple_user/concerns/controllers/application_controller.rb, if you remove this method it is going to act with the default behaviour
 	def set_user_return_to
-		session[:return_to] = request.referer
-	end
+		url = request.referer
+		namespace_name = url.split('/')[3] rescue ""
+		req_action_name = url.split('/').last rescue ""
+		logger.debug "SET USER RETURN TO ON 2: #{req_action_name}"
 
-	rescue_from CanCan::AccessDenied do |exception|
-		flash[:error] = "Access denied"
-		redirect_to root_url
-	end
-
-	def banned?
-		if current_user.present? && current_user.banned?
-		  sign_out current_user
-	      flash.delete(:notice)
-		  flash[:error] = "This account has been suspended."
-		  root_path
-		elsif current_admin_user.present? && current_admin_user.banned?
-		  sign_out current_admin_user
-	      flash.delete(:notice)
-		  flash[:error] = "This account has been suspended."
-		  root_path
+		if namespace_name != "simple_user" && req_action_name != "localhost:3000"
+			session[:return_to] = request.referer
 		end
-	end
-
-	def current_ability
-		@current_ability ||= Ability.new(current_admin_user)
 	end
 
 end
