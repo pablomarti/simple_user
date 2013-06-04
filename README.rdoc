@@ -30,15 +30,15 @@ Make avaiable to your users for loggin with Devise or Facebook, and manage them 
 == Link your views
 
 Example for users:
-	...
-	<% unless user_signed_in? %>
-		<%=link_to "Login", simple_user.new_user_session_path %>
-		<%= link_to "Login with Facebook", "/simple_user/auth/facebook", id: "sign_in" %>
-	<% else %>
-		<%= link_to "Welcome, #{current_user.username}", simple_user.edit_user_registration_path %>
-		<%= link_to "Log out", simple_user.destroy_user_session_path, method: :delete, id: "sign_out" %>
-	<% end %>
-	...
+   ...
+   <% unless user_signed_in? %>
+   	<%=link_to "Login", simple_user.new_user_session_path %>
+   	<%= link_to "Login with Facebook", "/simple_user/auth/facebook", id: "sign_in" %>
+   <% else %>
+   	<%= link_to "Welcome, #{current_user.username}", simple_user.edit_user_registration_path %>
+   	<%= link_to "Log out", simple_user.destroy_user_session_path, method: :delete, id: "sign_out" %>
+   <% end %>
+   ...
 
 Example for admins:
 	...
