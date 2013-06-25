@@ -40,11 +40,6 @@ module SimpleUser
             flash[:error] = "This account has been suspended."
             root_path
           else
-            puts "NO BANNED"
-            puts "ENV['REDIRECT_USER_AFTER_SIGNIN'] = " + ENV['REDIRECT_USER_AFTER_SIGNIN']
-            puts "!defined?(session[:return_to]) = " + !defined?(session[:return_to]).to_s
-            puts "session[:return_to] = " + session[:return_to].to_s
-
             if ENV['REDIRECT_USER_AFTER_SIGNIN'] == 'false' || !defined?(session[:return_to]) || session[:return_to] == "/" ||  session[:return_to].nil?
               session[:return_to] = "/"
               super
