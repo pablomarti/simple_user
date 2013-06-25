@@ -6,6 +6,7 @@
 	<%= link_to "Login with Facebook", "/simple_user/auth/facebook", id: "sign_in" %>
 <% else %>
 	<%= link_to "Welcome, #{current_user.username}", simple_user.edit_user_registration_path %>
+    <%= image_tag current_user.profile_pic_thumb %>
 	|
 	<%= link_to "Log out", simple_user.destroy_user_session_path, method: :delete, id: "sign_out" %>
 <% end %>

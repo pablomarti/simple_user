@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 	before_filter :set_user_return_to
 
 	#This method is overriding /lib/simple_user/concerns/controllers/application_controller.rb, if you remove this method it is going to act with the default behaviour
+=begin
 	def set_user_return_to
 		url = request.referer
 		namespace_name = url.split('/')[3] rescue ""
@@ -17,5 +18,6 @@ class ApplicationController < ActionController::Base
 			session[:return_to] = request.referer
 		end
 	end
+=end
 
 end

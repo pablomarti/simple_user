@@ -97,6 +97,25 @@ module SimpleUser
       return tmp_image
     end
 
+    def profile_pic_thumb
+      begin
+        if crimagify_images.where('image <> ""').empty?
+          social_picture("facebook", 150, 150)
+        else
+          imgA.thumb rescue social_picture("facebook", 150, 150)
+        end
+      rescue
+        social_picture("facebook", 150, 150) rescue "crimagify/image_not_selected.jpg"
+      end
+    end
+
+    def update_with_password(params={}) 
+      if params[:password].blank? 
+        params.delete(:password) 
+        params.delete(:password_confirmation) if params[:password_confirmation].blank? 
+      end 
+      update_attributes(params) 
+    end
 
     private
       def generate_random(str_length)
