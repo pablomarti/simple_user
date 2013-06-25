@@ -20,7 +20,7 @@ module SimpleUser
     end
 
     def create
-      set_user_return_to
+      set_user_return_tos
       self.resource = warden.authenticate!(auth_options)
       #self.resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#failure")
       set_flash_message(:notice, :signed_in) if is_navigational_format?
@@ -42,7 +42,7 @@ module SimpleUser
           else
             puts "NO BANNED"
             puts "ENV['REDIRECT_USER_AFTER_SIGNIN'] = " + ENV['REDIRECT_USER_AFTER_SIGNIN']
-            puts "!defined?(session[:return_to]) = " + !defined?(session[:return_to])
+            puts "!defined?(session[:return_to]) = " + !defined?(session[:return_to]).to_s
             puts "session[:return_to] = " + session[:return_to].to_s
 
             if ENV['REDIRECT_USER_AFTER_SIGNIN'] == 'false' || !defined?(session[:return_to]) || session[:return_to] == "/" ||  session[:return_to].nil?
