@@ -20,7 +20,7 @@ module SimpleUser
     end
 
     def create
-      set_user_return_tos
+      set_user_return_to
       self.resource = warden.authenticate!(auth_options)
       #self.resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#failure")
       set_flash_message(:notice, :signed_in) if is_navigational_format?
