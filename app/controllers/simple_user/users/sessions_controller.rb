@@ -1,7 +1,17 @@
 module SimpleUser
   class Users::SessionsController < Devise::SessionsController
 
+    def set_user_return_to
+      url = request.referer
+      namespace_name = url.split('/')[3] rescue ""
+
+      if namespace_name != "simple_user"
+        session[:return_to] = request.referer
+      end
+    end
+
     def new
+      set_user_return_to
       if ENV['REDIRECT_USER_AFTER_SIGNIN'] == 'false' || session[:return_to].nil?
         session[:return_to] = "/"
       end
@@ -10,6 +20,7 @@ module SimpleUser
     end
 
     def create
+      set_user_return_to
       self.resource = warden.authenticate!(auth_options)
       #self.resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#failure")
       set_flash_message(:notice, :signed_in) if is_navigational_format?
@@ -33,7 +44,7 @@ module SimpleUser
             puts "ENV['REDIRECT_USER_AFTER_SIGNIN'] = " + ENV['REDIRECT_USER_AFTER_SIGNIN']
             puts "!defined?(session[:return_to]) = " + !defined?(session[:return_to])
             puts "session[:return_to] = " + session[:return_to].to_s
-            
+
             if ENV['REDIRECT_USER_AFTER_SIGNIN'] == 'false' || !defined?(session[:return_to]) || session[:return_to] == "/" ||  session[:return_to].nil?
               session[:return_to] = "/"
               super
