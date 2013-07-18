@@ -15,7 +15,7 @@ module SimpleUser
            :recoverable, :rememberable, :trackable, :validatable
 
     attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :first_name, :last_name, :active, :crimagify_schema
-    attr_accessible :current_password
+    #attr_accessible :current_password
     
     validates :email, :uniqueness => true
     validates :username, :uniqueness => true

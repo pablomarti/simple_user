@@ -25,7 +25,7 @@ module SimpleUser
            :recoverable, :rememberable, :trackable, :validatable
 
     # Setup accessible (or protected) attributes for your model
-    attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :active, :current_password
+    attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :active
     attr_accessible :temporal_roles
     attr_accessor :temporal_roles
     
