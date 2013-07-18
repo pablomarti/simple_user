@@ -118,6 +118,11 @@ module SimpleUser
       update_attributes(params) 
     end
 
+    def update_without_password(params={})
+        params.delete(:current_password)
+        super(params)
+    end
+
     private
       def generate_random(str_length)
         charlist = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a

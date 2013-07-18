@@ -43,6 +43,11 @@ module SimpleUser
     def self.get_editable_admins_except(admin_id)
       joins(:roles).where("roles.name <> ? AND simple_user_admin_users.id <> ?", "admin", admin_id).group(:id)
     end
+
+    def update_without_password(params={})
+        params.delete(:current_password)
+        super(params)
+    end
     
   end
 end
