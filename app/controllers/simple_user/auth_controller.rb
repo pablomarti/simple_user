@@ -1,6 +1,17 @@
 module SimpleUser
   class AuthController < ApplicationController
 
+    before_filter :set_user_return_to
+
+    def set_user_return_to
+      url = request.referer
+      namespace_name = url.split('/')[3] rescue ""
+
+      if namespace_name != "simple_user"
+        session[:return_to] = request.referer
+      end
+    end
+
     def create
       auth = request.env["omniauth.auth"]   
       authentication = Authentication.find_by_provider_and_uid(auth['provider'], auth['uid'])
@@ -23,15 +34,11 @@ module SimpleUser
     end
 
     def redirect_after_create
-      logger.debug "AuthController.redirect_after_create"
-      logger.debug session[:return_to]
       if ENV['REDIRECT_USER_AFTER_SIGNIN'] == 'false' || !defined? session[:return_to] || session[:return_to] == "/" ||  session[:return_to].nil?
         session[:return_to] = "/"
-        logger.debug "CHANGE #{session[:return_to]}"
         redirect_to root_url
       else
         return_to = session[:return_to]
-        logger.debug "PRESERVES #{session[:return_to]}"
         session[:return_to] = "/"
         redirect_to return_to
       end   
