@@ -2,7 +2,7 @@ source "http://rubygems.org"
 
 gemspec
 
-gem 'devise'
+gem 'devise', '3.0.0'
 gem 'cancan'
 gem 'rolify'
 gem 'omniauth'
